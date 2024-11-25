@@ -1,0 +1,45 @@
+/* General Styling */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:#15202b; ;
+  color: #e8ecf0;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+/* Content Styling */
+.main-content {
+  margin-left: 250px; 
+  margin-top: 60px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: calc(100% - 200px); 
+  overflow: auto;
+  height: 100vh;
+
+}
+
+.content {
+  margin-left: 250px;
+  padding: 2rem;
+  flex: 1;
+}
+
+.page {
+  max-width: 600px;
+  margin: 30px;
+  text-align: left;
+}
+
+.page h2 {
+  color: #1da1f2;
+}
