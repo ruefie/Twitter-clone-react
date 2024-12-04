@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "text": "#JavaScript",
+    "type": "hashtag"
+  },
+  {
+    "id": 2,
+    "text": "React is Awesome",
+    "type": "article"
+  },
+  {
+    "id": 3,
+    "text": "#CodingLife",
+    "type": "hashtag"
+  },
+  {
+    "id": 4,
+    "text": "Full-Stack Development",
+    "type": "article"
+  },
+  {
+    "id": 5,
+    "text": "#OpenSource",
+    "type": "hashtag"
+  }
+]

@@ -1,0 +1,186 @@
+.sidebar {
+  position: fixed;; 
+  top: 0;
+  left: 0;
+  height: 100vh; 
+  width: 200px; 
+  background-color: #15202b; 
+  color: #fff; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); 
+}
+
+/* Logo Section */
+.logo {
+  display: flex;
+  margin-top: 10px;
+
+}
+.logo h1{
+  font-size: 25px; 
+  font-weight: 800;
+  width: 100%; 
+  text-align: left;
+  
+}
+.logo img{
+  width: 50px;
+  height: 50px;
+}
+.logo i{
+  font-size: 25px;
+  color: #1da1f2;
+  rotate: 45deg counter-clockwise;
+}
+/* Navigation Links */
+.links {
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+  width: 100%; 
+}
+
+.iconLinks {
+  display: inline-flex; 
+  align-items: center; 
+  gap: 10px; 
+  padding: 10px; 
+  border-radius: 50px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, color 0.3s; 
+  width: fit-content; 
+}
+
+/* Hover effect for icon + link */
+.iconLinks:hover {
+  background-color: #1d9bf0; 
+  color: #fff; 
+}
+
+.iconLinks i {
+  font-size: 1.2rem; 
+}
+
+/* Styling links inside iconLinks */
+.iconLinks li a {
+  text-decoration: none; 
+  color: inherit; 
+  font-size: 18px;
+}
+/* button style */
+.post{
+  background-color: #1d9bf0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 15px 12px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.post:hover {
+  background-color:  #0675be;
+  color: #fff;
+}
+
+/* profile styles */
+.profile{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.avatar{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #16cbaa;
+}
+
+/* .profile h2{
+  font-size: 16px;
+  font-weight: 700;
+} */
+.user{
+  display: flex;
+  flex-direction: column;
+  padding-right: 25px;
+}
+.user h2{
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.user p{
+  font-size: 14px;
+  margin-top: 0;
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative; /* Position relative to modalOverlay */
+  background-color: hsl(210, 34%, 13%);
+  color: #fff;
+  padding: 0 10px 0 30px; /* Padding inside the modal */
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Adjust width as needed */
+  max-width: 550px; /* Limit max width */
+  overflow-y: auto;
+  top: -150px; /* Adjust top positioning here */
+  left: -100px; /* Adjust left positioning here */
+  transform: translateY(-50px); /* Example of slight offset */
+}
+
+.modalInputWrapper{ 
+ 
+}
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #FFF;
+  font-size: 15px;
+}
+
+.drafts {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.shoutoutForm {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

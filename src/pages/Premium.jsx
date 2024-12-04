@@ -2,7 +2,7 @@ import React from "react";
 
 const Premium = () => {
   return (
-    <div className='main-content'>
+    <div >
       <h1>40% off a year of Premium</h1>
       <p>Our 2-year anniverary offer, ending:</p>
 

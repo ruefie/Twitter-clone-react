@@ -1,0 +1,24 @@
+.subscribeContainer{
+  background-image: url(../assets/2148346406.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 20px;
+  color: #333;
+  width: 90%;
+}
+
+.subscribeContainer button{
+  width: 30%;
+  background-color: #1d9bf0;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: none;
+}
+
+.subscribeContainer button:hover{
+  background-color: #007acc;
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "username": "@john_doe",
+    "name": "John Doe",
+    "profile_image": "https://randomuser.me/api/portraits/men/1.jpg",
+    "content": "Hello, world! This is my first tweet.",
+    "media": null,
+    "date": "2024-10-24T10:00:00Z"
+  },
+  {
+    "id": 2,
+    "username": "@jane_smith",
+    "name": "Jane Smith",
+    "profile_image": "https://randomuser.me/api/portraits/women/2.jpg",
+    "content": "Check out this view from my hike today! 🌄",
+    "media": "https://via.placeholder.com/500",
+    "date": "2024-10-22T10:00:00Z"
+  },
+  {
+    "id": 3,
+    "username": "@tech_guru",
+    "name": "Tech Guru",
+    "profile_image": "https://randomuser.me/api/portraits/men/3.jpg",
+    "content": "This new AI framework is going to change everything. Stay tuned.",
+    "media": null,
+    "date": "2024-09-10T10:00:00Z"
+  },
+  {
+    "id": 4,
+    "username": "@traveler99",
+    "name": "Wanderer",
+    "profile_image": "https://randomuser.me/api/portraits/women/4.jpg",
+    "content": "Finally made it to Bali! 🌴 Here's a quick clip of the beach vibes.",
+    "media": "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    "date": "2024-08-15T10:00:00Z"
+  },
+  {
+    "id": 5,
+    "username": "@foodie_lover",
+    "name": "Gourmet Chef",
+    "profile_image": "https://randomuser.me/api/portraits/men/5.jpg",
+    "content": "Look at this delicious dish I made! 🍝",
+    "media": "https://via.placeholder.com/500",
+    "date": "2024-08-10T10:00:00Z"
+  },
+  {
+    "id": 6,
+    "username": "@fitnessqueen",
+    "name": "Emily Rose",
+    "profile_image": "https://randomuser.me/api/portraits/women/6.jpg",
+    "content": "Today's workout was intense! 💪",
+    "media": null,
+    "date": "2024-08-01T10:00:00Z"
+  }
+]

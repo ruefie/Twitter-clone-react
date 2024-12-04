@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "profile_image": "https://via.placeholder.com/50",
+    "name": "John Doe",
+    "username": "@johndoe"
+  },
+  {
+    "id": 2,
+    "profile_image": "https://via.placeholder.com/50",
+    "name": "Jane Smith",
+    "username": "@janesmith"
+  },
+  {
+    "id": 3,
+    "profile_image": "https://via.placeholder.com/50",
+    "name": "Bob Johnson",
+    "username": "@bobjohnson"
+  },
+  {
+    "id": 4,
+    "profile_image": "https://via.placeholder.com/50",
+    "name": "Alice Brown",
+    "username": "@alicebrown"
+  },
+  {
+    "id": 5,
+    "profile_image": "https://via.placeholder.com/50",
+    "name": "Eve Adams",
+    "username": "@eveadams"
+  }
+]
