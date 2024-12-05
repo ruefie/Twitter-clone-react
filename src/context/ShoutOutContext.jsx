@@ -4,54 +4,55 @@ import shoutoutsData from "../data/shoutoutsData.json";
 export const ShoutOutContext = createContext();
 
 export const ShoutOutProvider = ({ children }) => {
-
-  const [shoutouts, setShoutouts] = useState([]); // Initialize as an empty array
+  const [shoutouts, setShoutouts] = useState([]);
+  const [reshoutModalContent, setReshoutModalContent] = useState(null);
+  const [isReshoutModalOpen, setIsReshoutModalOpen] = useState(false);
 
   useEffect(() => {
-    try {
-      // Simulate fetching data and sorting it by date
-      const sortedShoutouts = [...shoutoutsData].sort(
-        (a, b) => new Date(b.date) - new Date(a.date)
-      );
-      setShoutouts(sortedShoutouts); // Populate the state with data
-    } catch (error) {
-      console.error("Error initializing shoutouts:", error);
-    }
+    const sortedShoutouts = [...shoutoutsData].sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+    setShoutouts(sortedShoutouts);
   }, []);
-
-  
 
   const addShoutout = (shoutoutText) => {
     const newShoutout = {
       id: shoutouts.length + 1,
-      profile_image: "https://via.placeholder.com/50", // Placeholder profile image
+      profile_image: "https://via.placeholder.com/50",
       name: "Ruchie Roell",
       username: "@ruchieroell",
       content: shoutoutText,
-      media: "", // No media initially
-      date: new Date().toISOString(), // Use ISO format for consistent sorting
+      media: "",
+      date: new Date().toISOString(),
     };
 
-    setShoutouts((prev) => [newShoutout, ...prev]);
+    setShoutouts((prev) => {
+      const updatedShoutouts = [newShoutout, ...prev];
+      return updatedShoutouts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    });
   };
 
-  const reshout = (shoutout) => {
-    const reshoutedShoutout = {
-      ...shoutout,
-      id: shoutouts.length + 1,
-      content: `Reshouted: ${shoutout.content}`,
-      date: new Date().toISOString(), // ISO format
-    };
-
-    setShoutouts((prev) => [reshoutedShoutout, ...prev]);
+  const openReshoutModal = (content) => {
+    setReshoutModalContent(content);
+    setIsReshoutModalOpen(true);
   };
 
-  if (!shoutouts) {
-    console.warn("ShoutOuts are not initialized yet.");
-  }
+  const closeReshoutModal = () => {
+    setReshoutModalContent(null);
+    setIsReshoutModalOpen(false);
+  };
 
   return (
-    <ShoutOutContext.Provider value={{ shoutouts, addShoutout, reshout }}>
+    <ShoutOutContext.Provider
+      value={{
+        shoutouts,
+        addShoutout,
+        reshoutModalContent,
+        openReshoutModal,
+        closeReshoutModal,
+        isReshoutModalOpen,
+      }}
+    >
       {children}
     </ShoutOutContext.Provider>
   );

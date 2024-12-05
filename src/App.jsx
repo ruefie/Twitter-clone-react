@@ -17,7 +17,7 @@ import './App.css';
 
 const router = createBrowserRouter([
   {
-    element: <Layout />, 
+    element: <Layout />,
     children: [
       { path: '/', element: <Home /> },
       { path: '/explore', element: <Explore /> },

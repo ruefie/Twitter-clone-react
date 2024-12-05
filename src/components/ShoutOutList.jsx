@@ -1,15 +1,15 @@
-import React, {useContext} from "react";
+import React from "react";
 import ShoutOut from "./ShoutOut";
 import styles from "./ShoutOutList.module.css";
-import { ShoutOutContext } from "../context/ShoutOutContext";
-
-
 
 const ShoutOutList = ({ shoutout }) => {
-  const { shoutouts } = useContext(ShoutOutContext);
+  if (!Array.isArray(shoutout)) {
+    return <div>Error: ShoutOut list is not valid</div>;
+  }
+
   return (
     <ul className={styles.shoutoutListContainer}>
-      {shoutouts.map((item) => (
+      {shoutout.map((item) => (
         <ShoutOut
           key={item.id}
           profileImage={item.profile_image}

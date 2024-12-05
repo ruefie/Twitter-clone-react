@@ -1,4 +1,4 @@
-import React, { useState , useContext} from "react";
+import React, { useState, useContext } from "react";
 import styles from "./ShoutOut.module.css";
 import Lottie from "lottie-react";
 import heartAnimation from "../data/heartAnimation";
@@ -14,32 +14,25 @@ const formatDate = (dateString) => {
 
 const ShoutOut = ({ profileImage, name, username, content, media, date, id }) => {
   const [isClicked, setIsClicked] = useState(false);
-  const {reshout} = useContext(ShoutOutContext);
+  const { openReshoutModal } = useContext(ShoutOutContext);
 
   const handleHeartClick = () => {
     setIsClicked(true);
     setTimeout(() => setIsClicked(false), 2500);
   };
 
-  // const handleReshout = () => {
-  //   const reshoutedText = `Reshouted by ${username || "Anonymous"}: ${shoutout.text}`;
-  //   addShoutout({...shoutout, text: reshoutedText, isReshout: true});
-
-    
-  // };
-
   const handleReshout = () => {
-    const shoutout = {
-      id, // Pass the original shoutout ID
+    console.log('Reshout clicked', { id, profileImage, name, username, content, media, date });
+    openReshoutModal({
+      id,
       profileImage,
       name,
       username,
       content,
       media,
       date,
-    }
-    reshout(shoutout);
-  }
+    });
+  };
 
   return (
     <ul className={styles.container}>
@@ -70,7 +63,11 @@ const ShoutOut = ({ profileImage, name, username, content, media, date, id }) =>
           <span>60</span>
         </div>
         <div className={styles.iconInfo} data-tooltip="Reshout">
-          <i className="fa-solid fa-retweet" data-tooltip="Reshout" onClick={handleReshout}></i>
+          <i
+            className="fa-solid fa-retweet"
+            data-tooltip="Reshout"
+            onClick={handleReshout}
+          ></i>
           <span>1k</span>
         </div>
         <div className={styles.iconInfo} data-tooltip="Like">
@@ -92,11 +89,10 @@ const ShoutOut = ({ profileImage, name, username, content, media, date, id }) =>
           <i className="fa-solid fa-chart-simple"></i>
           <span>1.3M</span>
         </div>
-        <div className={styles.bookmarkForward} >
+        <div className={styles.bookmarkForward}>
           <div className={styles.iconForward} data-tooltip="Bookmark">
             <i className="fa-regular fa-bookmark"></i>
           </div>
-
           <div className={styles.iconShare} data-tooltip="Share">
             <i className="fa-solid fa-arrow-up-from-bracket"></i>
           </div>
