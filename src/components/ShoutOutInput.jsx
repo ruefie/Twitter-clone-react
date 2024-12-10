@@ -1,31 +1,27 @@
 import React, { useState, useContext } from "react";
 import styles from "./ShoutOutInput.module.css";
 import { ShoutOutContext } from "../context/ShoutOutContext";
-
 const ShoutOutInput = ({ isModal, closeModal }) => {
   const [shoutoutText, setShoutoutText] = useState("");
   const { addShoutout } = useContext(ShoutOutContext);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (shoutoutText.trim()) {
-    addShoutout(shoutoutText);
-    console.log("Shout Out sent:", shoutoutText);
-    setShoutoutText("");
-    if (closeModal) {
-      closeModal();}
+      addShoutout(shoutoutText.trim());
+      console.log("Shout Out sent:", shoutoutText);
+      setShoutoutText("");
+      if (closeModal) {
+        closeModal();
+      }
+    }
   };
-}
-
   const handleInputChange = (e) => {
     setShoutoutText(e.target.value);
-
   };
-
   return (
-    <div className={`${styles.container} ${isModal ? styles.modalContainer: ""}`}>
+    <div className={`${styles.container} ${isModal ? styles.modalContainer : ""}`}>
       <img
-        src="https://via.placeholder.com/30" // Placeholder for the avatar
+        src="https://api.dicebear.com/7.x/avataaars/svg?seed=default"
         alt="Avatar"
         className={styles.avatar}
       />
@@ -58,5 +54,4 @@ const ShoutOutInput = ({ isModal, closeModal }) => {
     </div>
   );
 };
-
 export default ShoutOutInput;

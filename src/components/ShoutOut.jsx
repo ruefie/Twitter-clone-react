@@ -4,41 +4,51 @@ import Lottie from "lottie-react";
 import heartAnimation from "../data/heartAnimation";
 import { ShoutOutContext } from "../context/ShoutOutContext";
 
-// Utility function to format the date
-const formatDate = (dateString) => {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    month: "short",
-    day: "2-digit",
-  });
-};
 
-const ShoutOut = ({ profileImage, name, username, content, media, date, id }) => {
+
+
+const formatDate = (dateString) => {
+  console.log("Formatting date:", dateString);
+  if (!dateString) {
+    console.log("Warning: dateString is undefined or null");
+    return "";
+  }
+  try {
+    return new Date(dateString).toLocaleDateString("en-US", {
+      month: "short",
+      day: "2-digit",
+    });
+  } catch (error) {
+    console.error("Error formatting date:", error);
+    return "";
+  }
+};
+ 
+
+const ShoutOut = ({
+  id,
+  profile_image,
+  name,
+  username,
+  content,
+  media,
+  date,
+  reshouted,
+}) => {
   const [isClicked, setIsClicked] = useState(false);
   const { openReshoutModal } = useContext(ShoutOutContext);
-
   const handleHeartClick = () => {
-    setIsClicked(true);
-    setTimeout(() => setIsClicked(false), 2500);
+    setIsClicked(!isClicked);
   };
-
   const handleReshout = () => {
-    console.log('Reshout clicked', { id, profileImage, name, username, content, media, date });
-    openReshoutModal({
-      id,
-      profileImage,
-      name,
-      username,
-      content,
-      media,
-      date,
-    });
+    openReshoutModal({ id,content, media, date, profile_image, name, username });
   };
 
   return (
     <ul className={styles.container}>
       <li className={styles.shoutOutItem}>
         <img
-          src={profileImage}
+          src={profile_image}
           alt={`${name}'s avatar`}
           className={styles.avatar}
         />
@@ -51,12 +61,49 @@ const ShoutOut = ({ profileImage, name, username, content, media, date, id }) =>
             </div>
             <i className="fa-solid fa-ellipsis"></i>
           </div>
-          <p className={styles.content}>{content}</p>
-          {media && (
-            <img src={media} alt="ShoutOut media" className={styles.media} />
+          {/* Reshouted Content */}
+          {reshouted ? (
+            <div className={styles.reshoutedContent}>
+              <p className={styles.content}>{content}</p>
+              <div className={styles.originalPost}>
+                <div className={styles.originalHeader}>
+                  <img
+                    src={reshouted.profile_image}
+                    alt={`${reshouted.name}'s avatar`}
+                    className={styles.originalAvatar}
+                  />
+                  <div className={styles.originalProfile}>
+                    <p className={styles.originalName}>{reshouted.name}</p>
+                    <p className={styles.originalUsername}>
+                      {reshouted.username}
+                    </p>
+                    <p className={styles.originalDate}>
+                      {formatDate(reshouted.date)}
+                    </p>
+                  </div>
+                </div>
+                <p className={styles.originalContent}>{reshouted.content}</p>
+                {reshouted.media && (
+                  <img
+                    src={reshouted.media}
+                    alt="Original media"
+                    className={styles.media}
+                  />
+                )}
+              </div>
+            </div>
+          ) : (
+            // Original Post Content
+            <div className={styles.contentContainer}>
+              <p className={styles.content}>{content}</p>
+              {media && (
+                <img src={media} alt="Post media" className={styles.media} />
+              )}
+            </div>
           )}
         </div>
       </li>
+      {/* Action Icons section */}
       <div className={styles.iconContainer}>
         <div className={styles.iconInfo} data-tooltip="Comment">
           <i className="fa-regular fa-comment"></i>

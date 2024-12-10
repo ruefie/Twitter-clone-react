@@ -1,47 +1,78 @@
 import React, { createContext, useState, useEffect } from "react";
 import shoutoutsData from "../data/shoutoutsData.json";
-
 export const ShoutOutContext = createContext();
-
 export const ShoutOutProvider = ({ children }) => {
   const [shoutouts, setShoutouts] = useState([]);
   const [reshoutModalContent, setReshoutModalContent] = useState(null);
   const [isReshoutModalOpen, setIsReshoutModalOpen] = useState(false);
-
   useEffect(() => {
     const sortedShoutouts = [...shoutoutsData].sort(
       (a, b) => new Date(b.date) - new Date(a.date)
     );
     setShoutouts(sortedShoutouts);
   }, []);
-
+  
   const addShoutout = (shoutoutText) => {
+    if (!shoutoutText || typeof shoutoutText !== "string" || !shoutoutText.trim()) {
+      console.error("Invalid shoutout text:", shoutoutText);
+      return;
+    }
+  
     const newShoutout = {
-      id: shoutouts.length + 1,
-      profile_image: "https://via.placeholder.com/50",
+      id: Date.now(),
+      profile_image: "https://api.dicebear.com/7.x/avataaars/svg?seed=default", 
       name: "Ruchie Roell",
       username: "@ruchieroell",
-      content: shoutoutText,
+      content: shoutoutText.trim(),
       media: "",
       date: new Date().toISOString(),
     };
-
+  
     setShoutouts((prev) => {
       const updatedShoutouts = [newShoutout, ...prev];
       return updatedShoutouts.sort((a, b) => new Date(b.date) - new Date(a.date));
     });
   };
+  
+  const addReshout = (reshoutData) => {
+    const reshoutedDate = reshoutData.date
+    ? new Date(reshoutData.date).toISOString()
+    : new Date().toISOString();
 
+    // Create a new shoutout with the reshouted content
+    const newShoutout = {
+      id: Date.now(),
+      profile_image: "https://api.dicebear.com/7.x/avataaars/svg?seed=reshouter",
+      name: "Ruchie Roell", 
+      username: "@ruchieroell",
+      content: reshoutData.reshoutText || "Reshouted", 
+      date: new Date().toISOString(),
+      reshouted: { // Original post data
+        id: reshoutData.id,
+        profile_image: reshoutData.profile_image,
+        name: reshoutData.name,
+        username: reshoutData.username,
+        content: reshoutData.content,
+        media: reshoutData.media,
+        date: reshoutData.date
+      }
+    };
+  
+    setShoutouts((prev) => {
+      const updatedShoutouts = [newShoutout, ...prev];
+      return updatedShoutouts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    });
+    console.log("Added reshout:", newShoutout); 
+  };
   const openReshoutModal = (content) => {
+    console.log("Opening reshout modal with content:", content); 
     setReshoutModalContent(content);
     setIsReshoutModalOpen(true);
   };
-
   const closeReshoutModal = () => {
     setReshoutModalContent(null);
     setIsReshoutModalOpen(false);
   };
-
   return (
     <ShoutOutContext.Provider
       value={{
@@ -51,11 +82,11 @@ export const ShoutOutProvider = ({ children }) => {
         openReshoutModal,
         closeReshoutModal,
         isReshoutModalOpen,
+        addReshout,
       }}
     >
       {children}
     </ShoutOutContext.Provider>
   );
 };
-
 export default ShoutOutContext;

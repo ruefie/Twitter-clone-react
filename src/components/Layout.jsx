@@ -5,8 +5,7 @@ import ReshoutModal from "../modal/ReshoutModal";
 import { ShoutOutContext } from "../context/ShoutOutContext";
 
 const Layout = () => {
-  const { isReshoutModalOpen } = useContext(ShoutOutContext); // Use context to get modal state
-
+  const { isReshoutModalOpen } = useContext(ShoutOutContext); 
   return (
     <div className="app-container">
       {/* Render ReshoutModal when modal is open */}

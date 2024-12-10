@@ -216,3 +216,51 @@
   margin-bottom: 5px;
   text-transform: uppercase;
 }
+
+.reshoutedContent {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  /* border: 1px solid var(--border); */
+  border-radius: 0.5rem;
+  /* background-color: var(--popover); */
+}
+.originalPost {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid ;
+  border-radius: 0.5rem;
+  /* background-color: var(--card); */
+}
+.originalHeader {
+  display: flex;
+  align-items: center;
+}
+
+.originalProfile {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.originalAvatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+.originalName {
+  font-weight: bold;
+}
+.originalUsername {
+  
+}
+.originalDate {
+  
+  font-size: 0.8rem;
+}
+.originalContent {
+  margin-top: 0.5rem;
+}
+.contentContainer {
+  width: 100%;
+  margin-top: 0.5rem;
+}

@@ -6,8 +6,8 @@ const ReshoutModal = () => {
   const {
     reshoutModalContent,
     isReshoutModalOpen,
-    setIsReshoutModalOpen,
-    addShoutout,
+    closeReshoutModal,
+    addReshout,
   } = useContext(ShoutOutContext);
 
   const [reshoutText, setReshoutText] = useState("");
@@ -15,24 +15,19 @@ const ReshoutModal = () => {
   if (!isReshoutModalOpen || !reshoutModalContent) return null;
 
   const handleShoutOut = () => {
-    const newShoutOut = {
-      id: Date.now(),
-      profile_image: reshoutModalContent.profileImage, 
-      name: reshoutModalContent.name,
-      username: reshoutModalContent.username,
-      content: reshoutText.trim()
-        ? `${reshoutText} // Reshout: ${reshoutModalContent.content}`
-        : `Reshout: ${reshoutModalContent.content}`,
+    const reshoutedData = {
+      id: reshoutModalContent.id,
+      profile_image: reshoutModalContent.profile_image || "https://via.placeholder.com/50",
+      name: reshoutModalContent.name || "Anonymous",
+      username: reshoutModalContent.username || "@anonymous",
+      content: reshoutModalContent.content,
       media: reshoutModalContent.media,
-      date: new Date().toISOString(),
+      reshoutText: reshoutText.trim(),
     };
-
-    
-    addShoutout(newShoutOut);
-
-    // Close modal and reset input
-    setIsReshoutModalOpen(false);
-    setReshoutText("");
+  
+    addReshout(reshoutedData); 
+    closeReshoutModal(); 
+    setReshoutText(""); 
   };
 
   return (
@@ -40,7 +35,7 @@ const ReshoutModal = () => {
       <div className={styles.modal}>
         <button
           className={styles.closeButton}
-          onClick={() => setIsReshoutModalOpen(false)}
+          onClick={() => closeReshoutModal()}
         >
           &times;
         </button>
@@ -52,9 +47,18 @@ const ReshoutModal = () => {
         />
         <div className={styles.originalShoutOut}>
           <p>
-            <strong>{reshoutModalContent.name}</strong>{" "}
-            <span>@{reshoutModalContent.username}</span>{" "}
-            · {new Date(reshoutModalContent.date).toLocaleDateString("en-US", { month: "short", day: "2-digit" })}
+            <strong>{reshoutModalContent.name}</strong>
+            <span>{reshoutModalContent.username}</span>
+            <span>
+              {" "}
+              ·{" "}
+              {reshoutModalContent.date
+    ? new Date(reshoutModalContent.date).toLocaleDateString("en-US", {
+        month: "short",
+        day: "2-digit",
+      })
+    : "Invalid date"}
+            </span>
           </p>
           <p>{reshoutModalContent.content}</p>
           {reshoutModalContent.media && (
