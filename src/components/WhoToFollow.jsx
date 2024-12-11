@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import styles from "./WhoToFollow.module.css";
-
-// Import user data
 import usersData from "../data/usersData.json";
 
 const WhoToFollow = () => {
-  const [visibleUsers, setVisibleUsers] = useState(4); // Number of users to display initially
+  const [visibleUsers, setVisibleUsers] = useState(4); 
 
   // Handler to show more users
   const handleShowMore = () => {

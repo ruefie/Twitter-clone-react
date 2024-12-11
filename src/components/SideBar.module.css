@@ -54,7 +54,7 @@
   width: fit-content; 
 }
 
-/* Hover effect for icon + link */
+
 .iconLinks:hover {
   background-color: #1d9bf0; 
   color: #fff; 
@@ -64,13 +64,13 @@
   font-size: 1.2rem; 
 }
 
-/* Styling links inside iconLinks */
+
 .iconLinks li a {
   text-decoration: none; 
   color: inherit; 
   font-size: 18px;
 }
-/* button style */
+
 .post{
   background-color: #1d9bf0;
   color: #fff;
@@ -89,7 +89,7 @@
   color: #fff;
 }
 
-/* profile styles */
+
 .profile{
   display: flex;
   align-items: center;
@@ -130,7 +130,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background: rgba(84, 83, 83, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,19 +138,20 @@
 }
 
 .modal {
-  position: relative; /* Position relative to modalOverlay */
+  position: relative; 
   background-color: hsl(210, 34%, 13%);
   color: #fff;
-  padding: 0 10px 0 30px; /* Padding inside the modal */
+  padding: 0 10px 0 30px; 
   margin: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Adjust width as needed */
-  max-width: 550px; /* Limit max width */
+  border: 0.5px solid #fff;
+  width: 100%;
+  max-width: 550px; 
   overflow-y: auto;
-  top: -150px; /* Adjust top positioning here */
-  left: -100px; /* Adjust left positioning here */
-  transform: translateY(-50px); /* Example of slight offset */
+  top: -150px; 
+  left: -100px; 
+  transform: translateY(-50px); 
 }
 
 .modalInputWrapper{ 
