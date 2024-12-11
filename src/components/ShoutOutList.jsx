@@ -10,6 +10,7 @@ const ShoutOutList = ({ shoutout }) => {
       {shoutout.map((item) => (
         <ShoutOut
           key={item.id}
+          id={item.id} 
           profile_image={item.profile_image} 
           name={item.name}
           username={item.username}

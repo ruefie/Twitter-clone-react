@@ -5,7 +5,6 @@ import heartAnimation from "../data/heartAnimation";
 import { ShoutOutContext } from "../context/ShoutOutContext";
 import CommentModal from "../modal/CommentModal";
 
-// Utility function to format the date
 const formatDate = (dateString) => {
   if (!dateString) return "";
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -23,20 +22,27 @@ const ShoutOut = ({
   media,
   date,
   reshouted,
+  likes = 0,
 }) => {
+  const { addLike } = useContext(ShoutOutContext);
   const [isClicked, setIsClicked] = useState(false);
-  const { openReshoutModal } = useContext(ShoutOutContext);
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
-  
+  const { openReshoutModal, getCommentCount } = useContext(ShoutOutContext);
 
+  const numericId = parseInt(id, 10);
+  if (isNaN(numericId)) {
+    console.error("Invalid id provided to ShoutOut:", id);
+    return null;
+  }
 
   const handleHeartClick = () => {
     setIsClicked(!isClicked);
+    addLike(numericId);
   };
 
   const handleReshout = () => {
     openReshoutModal({
-      id,
+      id: numericId,
       profile_image,
       name,
       username,
@@ -50,19 +56,17 @@ const ShoutOut = ({
     setIsCommentModalOpen(true);
   };
 
+  const commentCount = getCommentCount(numericId);
+
   return (
     <ul className={styles.container}>
       {reshouted && (
-          <div className={styles.reshoutedHeader}>
-            <i className="fa-solid fa-retweet" /> 
-            <span>You Reshouted</span>
-          </div>
-        )}
+        <div className={styles.reshoutedHeader}>
+          <i className="fa-solid fa-retweet" />
+          <span>You Reshouted</span>
+        </div>
+      )}
       <li className={styles.shoutOutItem}>
-        {/* Reshouted Header */}
-        
-
-        {/* Profile Header */}
         <img
           src={profile_image}
           alt={`${name}'s avatar`}
@@ -77,8 +81,6 @@ const ShoutOut = ({
             </div>
             <i className="fa-solid fa-ellipsis"></i>
           </div>
-
-          {/* Reshouted Content */}
           {reshouted ? (
             <div className={styles.reshoutedContent}>
               <p className={styles.content}>{content}</p>
@@ -110,7 +112,6 @@ const ShoutOut = ({
               </div>
             </div>
           ) : (
-            // Original Post Content
             <div className={styles.contentContainer}>
               <p className={styles.content}>{content}</p>
               {media && (
@@ -120,19 +121,15 @@ const ShoutOut = ({
           )}
         </div>
       </li>
-
-      {/* Action Icons section */}
       <div className={styles.iconContainer}>
         <div className={styles.iconInfo} data-tooltip="Comment">
           <i className="fa-regular fa-comment" onClick={handleCommentClick}></i>
-          <span>60</span>
-        </div>
-{/* Comment Modal */}
-{isCommentModalOpen && (
+          <span>{commentCount}</span>
+          {isCommentModalOpen && (
         <CommentModal
           isOpen={isCommentModalOpen}
           onClose={() => setIsCommentModalOpen(false)}
-          postId={id}
+          postId={numericId}
           postDetails={{
             profile_image,
             name,
@@ -144,7 +141,7 @@ const ShoutOut = ({
           }}
         />
       )}
-
+        </div>
         <div className={styles.iconInfo} data-tooltip="Reshout">
           <i
             className="fa-solid fa-retweet"
@@ -166,7 +163,7 @@ const ShoutOut = ({
               <i className="fa-regular fa-heart"></i>
             )}
           </div>
-          <span>5k</span>
+          <span>{likes}</span>
         </div>
         <div className={styles.iconInfo} data-tooltip="Views">
           <i className="fa-solid fa-chart-simple"></i>
@@ -181,6 +178,7 @@ const ShoutOut = ({
           </div>
         </div>
       </div>
+     
     </ul>
   );
 };

@@ -11,6 +11,7 @@ const CommentModal = ({ isOpen, onClose, postId, postDetails }) => {
   const handleAddComment = () => {
     addComment(postId, commentText);
     setCommentText("");
+    onClose();
   };
 
   return (

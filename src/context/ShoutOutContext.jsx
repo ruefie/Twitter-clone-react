@@ -7,6 +7,8 @@ export const ShoutOutProvider = ({ children }) => {
   const [shoutouts, setShoutouts] = useState([]);
   const [reshoutModalContent, setReshoutModalContent] = useState(null);
   const [isReshoutModalOpen, setIsReshoutModalOpen] = useState(false);
+  const [comments, setComments] = useState({});
+  
 
   useEffect(() => {
     const sortedShoutouts = [...shoutoutsData].sort(
@@ -29,6 +31,7 @@ export const ShoutOutProvider = ({ children }) => {
       content: shoutoutText.trim(),
       media: "",
       date: new Date().toISOString(),
+      likes: 0,
     };
   
     setShoutouts((prev) => {
@@ -65,6 +68,53 @@ export const ShoutOutProvider = ({ children }) => {
     console.log("Added reshout:", newShoutout);
   };
 
+
+  const addComment = (postId, commentText) => {
+    if (!commentText || typeof commentText !== "string" || !commentText.trim()) {
+      console.error("Invalid comment text:", commentText);
+      return;
+    }
+
+    if (typeof postId !== 'number' || isNaN(postId)) {
+      console.error("Invalid postId:", postId);
+      return;
+    }
+
+    setComments((prevComments) => {
+      const postComments = prevComments[postId] || [];
+      const newComment = {
+        id: Date.now(),
+        text: commentText.trim(),
+        date: new Date().toISOString(),
+      };
+
+      console.log(`Adding comment to post ${postId}:`, newComment);
+
+      return {
+        ...prevComments,
+        [postId]: [...postComments, newComment],
+      };
+    });
+  };
+
+  const getCommentCount = (postId) => {
+    if (typeof postId !== 'number' || isNaN(postId)) {
+      console.error("Invalid postId in getCommentCount:", postId);
+      return 0;
+    }
+    return comments[postId]?.length || 0;
+  };
+
+  const addLike = (postId) => {
+    setShoutouts((prev) =>
+      prev.map((post) =>
+        post.id === postId
+          ? { ...post, likes: (post.likes || 0) + 1 } // Increment likes
+          : post
+      )
+    );
+  };
+  
   const openReshoutModal = (content) => {
     console.log("Opening reshout modal with content:", content);
     setReshoutModalContent(content);
@@ -76,15 +126,6 @@ export const ShoutOutProvider = ({ children }) => {
     setIsReshoutModalOpen(false);
   };
 
-  const [comments, setComments] = useState({}); 
-
-const addComment = (postId, commentText) => {
-  if (!commentText.trim()) return;
-  setComments((prev) => ({
-    ...prev,
-    [postId]: [...(prev[postId] || []), { id: Date.now(), text: commentText }],
-  }));
-};
 
   return (
     <ShoutOutContext.Provider
@@ -97,7 +138,8 @@ const addComment = (postId, commentText) => {
         isReshoutModalOpen,
         addReshout,
         comments, 
-    addComment
+        addComment,
+        getCommentCount
       }}
     >
       {children}
