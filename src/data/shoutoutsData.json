@@ -5,8 +5,13 @@
     "name": "John Doe",
     "profile_image": "https://randomuser.me/api/portraits/men/1.jpg",
     "content": "Hello, world! This is my first tweet.",
-    "media": null,
-    "date": "2024-10-24T10:00:00Z"
+    "media": {
+      "type": "giphy",
+      "url": "https://giphy.com/embed/fA0JygY49EWV6sGIyF"
+
+    },
+    "date": "2024-10-24T10:00:00Z",
+    "likes": 0
   },
   {
     "id": 2,
@@ -14,8 +19,12 @@
     "name": "Jane Smith",
     "profile_image": "https://randomuser.me/api/portraits/women/2.jpg",
     "content": "Check out this view from my hike today! 🌄",
-    "media": "https://via.placeholder.com/500",
-    "date": "2024-10-22T10:00:00Z"
+   "media": {
+      "type": "giphy",
+      "url": "https://giphy.com/embed/tHyTTHD7OTHeeQKFuw"
+    },
+    "date": "2024-10-22T10:00:00Z",
+    "likes": 0
   },
   {
     "id": 3,
@@ -23,8 +32,12 @@
     "name": "Tech Guru",
     "profile_image": "https://randomuser.me/api/portraits/men/3.jpg",
     "content": "This new AI framework is going to change everything. Stay tuned.",
-    "media": null,
-    "date": "2024-09-10T10:00:00Z"
+   "media": {
+      "type": "giphy",
+      "url": "https://giphy.com/embed/8hSPD2Yn4PuUM"
+    },
+    "date": "2024-09-10T10:00:00Z",
+    "likes": 0
   },
   {
     "id": 4,
@@ -32,8 +45,12 @@
     "name": "Wanderer",
     "profile_image": "https://randomuser.me/api/portraits/women/4.jpg",
     "content": "Finally made it to Bali! 🌴 Here's a quick clip of the beach vibes.",
-    "media": "https://unsplash.com/photos/a-large-body-of-water-with-a-bridge-over-it-_ujj3eCVuQU",
-    "date": "2024-08-15T10:00:00Z"
+    "media":{
+      "type": "image",
+      "url": "https://images.pexels.com/photos/50594/sea-bay-waterfront-beach-50594.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load"
+    },
+    "date": "2024-08-15T10:00:00Z",
+    "likes": 0
   },
   {
     "id": 5,
@@ -41,8 +58,13 @@
     "name": "Gourmet Chef",
     "profile_image": "https://randomuser.me/api/portraits/men/5.jpg",
     "content": "Look at this delicious dish I made! 🍝",
-    "media": "https://via.placeholder.com/500",
-    "date": "2024-08-10T10:00:00Z"
+    "media":{
+      "type": "video",
+      "url":   "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+    },
+   
+    "date": "2024-08-10T10:00:00Z",
+    "likes": 0
   },
   {
     "id": 6,
@@ -51,6 +73,7 @@
     "profile_image": "https://randomuser.me/api/portraits/women/6.jpg",
     "content": "Today's workout was intense! 💪",
     "media": null,
-    "date": "2024-08-01T10:00:00Z"
+    "date": "2024-08-01T10:00:00Z",
+    "likes": 0
   }
 ]

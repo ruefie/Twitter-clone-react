@@ -109,11 +109,17 @@ export const ShoutOutProvider = ({ children }) => {
     setShoutouts((prev) =>
       prev.map((post) =>
         post.id === postId
-          ? { ...post, likes: (post.likes || 0) + 1 } // Increment likes
+          ? { ...post, likes: (post.likes || 0) + 1 } 
           : post
       )
     );
   };
+
+  const getLikes = (postId) => {
+    const post = shoutouts.find((shoutout) => shoutout.id === postId);
+    return post ? post.likes || 0 : 0;
+  };
+  
   
   const openReshoutModal = (content) => {
     console.log("Opening reshout modal with content:", content);
@@ -139,7 +145,9 @@ export const ShoutOutProvider = ({ children }) => {
         addReshout,
         comments, 
         addComment,
-        getCommentCount
+        getCommentCount,
+        addLike,
+        getLikes
       }}
     >
       {children}

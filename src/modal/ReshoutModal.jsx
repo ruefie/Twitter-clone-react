@@ -23,6 +23,7 @@ const ReshoutModal = () => {
       content: reshoutModalContent.content,
       media: reshoutModalContent.media,
       reshoutText: reshoutText.trim(),
+      date: reshoutModalContent.date
     };
   
     addReshout(reshoutedData); 

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./ShoutOut.module.css";
 import Lottie from "lottie-react";
 import heartAnimation from "../data/heartAnimation";
@@ -22,12 +22,17 @@ const ShoutOut = ({
   media,
   date,
   reshouted,
-  likes = 0,
 }) => {
-  const { addLike } = useContext(ShoutOutContext);
+  const { addLike, getLikes } = useContext(ShoutOutContext);
+  const [likes, setLikes] = useState(getLikes(id));
   const [isClicked, setIsClicked] = useState(false);
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
   const { openReshoutModal, getCommentCount } = useContext(ShoutOutContext);
+
+  useEffect(() => {
+    // Update likes whenever the context changes
+    setLikes(getLikes(id));
+  }, [getLikes, id]);
 
   const numericId = parseInt(id, 10);
   if (isNaN(numericId)) {
@@ -36,8 +41,14 @@ const ShoutOut = ({
   }
 
   const handleHeartClick = () => {
-    setIsClicked(!isClicked);
-    addLike(numericId);
+    if (!isClicked) {
+      setIsClicked(true);
+      addLike(id);
+
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 2500);
+    }
   };
 
   const handleReshout = () => {
@@ -114,8 +125,32 @@ const ShoutOut = ({
           ) : (
             <div className={styles.contentContainer}>
               <p className={styles.content}>{content}</p>
+
               {media && (
-                <img src={media} alt="Post media" className={styles.media} />
+                <>
+                  {media.type === "giphy" && (
+                    <iframe
+                      src={media.url}
+                      frameBorder="0"
+                      allowFullScreen
+                      title="Giphy GIF"
+                      className={styles.media}
+                    ></iframe>
+                  )}
+                  {media.type === "video" && (
+                    <video controls className={styles.media}>
+                      <source src={media.url} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
+                  {media.type === "image" && (
+                    <img
+                      src={media.url}
+                      alt="Post media"
+                      className={styles.media}
+                    />
+                  )}
+                </>
               )}
             </div>
           )}
@@ -126,21 +161,21 @@ const ShoutOut = ({
           <i className="fa-regular fa-comment" onClick={handleCommentClick}></i>
           <span>{commentCount}</span>
           {isCommentModalOpen && (
-        <CommentModal
-          isOpen={isCommentModalOpen}
-          onClose={() => setIsCommentModalOpen(false)}
-          postId={numericId}
-          postDetails={{
-            profile_image,
-            name,
-            username,
-            content,
-            media,
-            date,
-            reshouted,
-          }}
-        />
-      )}
+            <CommentModal
+              isOpen={isCommentModalOpen}
+              onClose={() => setIsCommentModalOpen(false)}
+              postId={numericId}
+              postDetails={{
+                profile_image,
+                name,
+                username,
+                content,
+                media,
+                date,
+                reshouted,
+              }}
+            />
+          )}
         </div>
         <div className={styles.iconInfo} data-tooltip="Reshout">
           <i
@@ -178,7 +213,6 @@ const ShoutOut = ({
           </div>
         </div>
       </div>
-     
     </ul>
   );
 };
