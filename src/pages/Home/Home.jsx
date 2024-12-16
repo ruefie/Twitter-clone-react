@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
-import ShoutOutInput from "../components/ShoutOutInput";
-import ShoutOutList from "../components/ShoutOutList";
-import SearchBar from "../components/SearchBar";
-import WhoToFollow from "../components/WhoToFollow";
-import WhatsHappening from "../components/WhatsHappening";
-import Subscribe from "../components/Subscribe";
-import { ShoutOutContext} from "../context/ShoutOutContext";
+import ShoutOutInput from "../../components/ShoutOutInput";
+import ShoutOutList from "../../components/ShoutOutList";
+import SearchBar from "../../components/SearchBar";
+import WhoToFollow from "../../components/WhoToFollow";
+import WhatsHappening from "../../components/WhatsHappening";
+import Subscribe from "../../components/Subscribe";
+import { ShoutOutContext} from "../../context/ShoutOutContext";
 import styles from "./Home.module.css";
-import SideBar from "../components/SideBar";
+import SideBar from "../../components/SideBar";
 
 
 

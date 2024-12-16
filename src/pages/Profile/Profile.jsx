@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Profile.module.css";
-import ProfileHeader from "../components/profile/ProfileHeader";
-import ProfileInfo from "../components/profile/ProfileInfo";
-import ProfileTabs from "../components/profile/ProfileTabs";
-import ShoutOutList from "../components/ShoutOutList";
-import SearchBar from "../components/SearchBar";
-import Subscribe from "../components/Subscribe";
-import WhoToFollow from "../components/WhoToFollow";
-import WhatsHappening from "../components/WhatsHappening";
+import ProfileHeader from "../../components/profile/ProfileHeader";
+import ProfileInfo from "../../components/profile/ProfileInfo";
+import ProfileTabs from "../../components/profile/ProfileTabs";
+import ShoutOutList from "../../components/ShoutOutList";
+import SearchBar from "../../components/SearchBar";
+import Subscribe from "../../components/Subscribe";
+import WhoToFollow from "../../components/WhoToFollow";
+import WhatsHappening from "../../components/WhatsHappening";
 
 const Profile = () => {
   const { username } = useParams();

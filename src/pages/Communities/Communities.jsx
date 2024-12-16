@@ -1,8 +1,8 @@
 import React from 'react';
-import SearchBar from '../components/SearchBar';
-import Subscribe from '../components/Subscribe';
-import WhoToFollow from '../components/WhoToFollow';
-import WhatsHappening from '../components/WhatsHappening';
+import SearchBar from '../../components/SearchBar';
+import Subscribe from '../../components/Subscribe';
+import WhoToFollow from '../../components/WhoToFollow';
+import WhatsHappening from '../../components/WhatsHappening';
 import { ArrowLeft } from 'lucide-react';
 import styles from './Communities.module.css';
 

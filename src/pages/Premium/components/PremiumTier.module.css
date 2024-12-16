@@ -1,0 +1,65 @@
+.tier {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(204, 204, 204, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.price {
+  color: #8899a6;
+  margin: 0;
+}
+
+.amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.checkIcon {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  color: #1d9bf0;
+}
+
+.subscribeButton {
+  width: 100%;
+  background-color: #1d9bf0;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.subscribeButton:hover {
+  background-color: #1a8edb;
+}

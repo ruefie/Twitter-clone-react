@@ -1,0 +1,40 @@
+.container {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: hsl(210, 34%, 13%);
+  color: #fff;
+  overflow-y: auto;
+}
+
+.content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+
+.intro {
+  margin-bottom: 32px;
+}
+
+.intro h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+
+.intro p {
+  font-size: 16px;
+  color: #8899a6;
+  margin: 0;
+}
+
+.tiers {
+  margin-bottom: 32px;
+  display: flex;  
+}
+
+.disclaimer {
+  font-size: 14px;
+  color: #8899a6;
+  line-height: 1.5;
+}
