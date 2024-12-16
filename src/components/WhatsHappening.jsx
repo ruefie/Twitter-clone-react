@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from "react";
-import trendsData from "../data/trends.json"; 
-import styles from "./WhatsHappening.module.css";
+import React from 'react';
+import { trendingData } from '../data/trendingData';
+import styles from './WhatsHappening.module.css';
 
-const WhatsHappening = ({ setSearchQuery }) => {
-  const [trends, setTrends] = useState([]);
-
-  useEffect(() => {
-    
-    setTrends(trendsData);
-  }, []);
-
-  const handleClick = (text) => {
-    setSearchQuery(text); 
-  };
-
+const WhatsHappening = () => {
   return (
-    <div className={styles.whatsHappening}>
-      <h2>What's Happening</h2>
-      <ul>
-        {trends.map((trend) => (
-          <li key={trend.id} onClick={() => handleClick(trend.text)}>
-            {trend.type === "hashtag" ? (
-              <span className={styles.hashtag}>{trend.text}</span>
-            ) : (
-              trend.text
-            )}
-          </li>
+    <div className={styles.container}>
+      <h2 className={styles.title}>What's happening</h2>
+      <div className={styles.trendingList}>
+        {trendingData.slice(0, 5).map((trend) => (
+          <div key={trend.id} className={styles.trendingItem}>
+            <div className={styles.content}>
+              <div className={styles.info}>
+              {/* {trend.image && (
+                <div className={styles.imageContainer}>
+                  <img src={trend.image} alt={trend.title} />
+                </div>
+              )} */}
+                <span className={styles.category}>{trend.category}</span>
+                <h3 className={styles.title}>{trend.title}</h3>
+                <span className={styles.posts}>{trend.posts.toLocaleString()} posts</span>
+              </div>
+             
+            </div>
+            <button className={styles.moreButton}>
+              <i className="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
         ))}
-      </ul>
+      </div>
+      <a href="/explore" className={styles.showMore}>Show more</a>
     </div>
   );
 };

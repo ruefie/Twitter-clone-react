@@ -1,4 +1,8 @@
-.whatsHappening {
+.container {
+  background-color: hsl(210, 34%, 13%);
+  border-radius: 16px;
+  margin: 16px 0;
+  overflow: hidden;
   border: 0.5px solid rgba(204, 204, 204, 0.5);
   border-radius: 8px;
   color: #fff;
@@ -8,30 +12,102 @@
   width: 89%;
 }
 
-.whatsHappening h2 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #fff;
-}
-
-.whatsHappening ul {
-  list-style: none;
-  padding: 0;
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  padding: 12px;
   margin: 0;
 }
 
-.whatsHappening li {
-  margin-bottom: 10px;
+.trendingList {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.trendingItem {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.5px solid rgba(204, 204, 204, 0.5);
+  transition: background-color 0.2s;
   cursor: pointer;
+}
+
+.trendingItem:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.content {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.category {
+  font-size: 13px;
+  color: #8899a6;
+}
+
+.info h3 {
+  font-size: 15px;
+  /* font-weight: 700; */
+}
+
+
+.posts {
+  font-size: 13px;
+  color: #8899a6;
+}
+
+.imageContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  /* width: 50%; */
+  /* height: 50%; */
+  /* border-radius: 8px; */
+  object-fit: cover;
+}
+
+.moreButton {
+  background: none;
+  border: none;
+  color: #8899a6;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.moreButton:hover {
+  background-color: rgba(29, 155, 240, 0.1);
   color: #1d9bf0;
-  font-size: 14px;
-  transition: color 0.2s ease;
 }
 
-.whatsHappening li:hover {
-  color: #007bff;
+.showMore {
+  display: block;
+  padding: 16px;
+  color: #1d9bf0;
+  text-decoration: none;
+  transition: background-color 0.2s;
 }
 
-.hashtag {
-  font-weight: bold;
+.showMore:hover {
+  background-color: rgba(255, 255, 255, 0.03);
 }
