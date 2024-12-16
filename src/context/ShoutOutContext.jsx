@@ -8,6 +8,9 @@ export const ShoutOutProvider = ({ children }) => {
   const [reshoutModalContent, setReshoutModalContent] = useState(null);
   const [isReshoutModalOpen, setIsReshoutModalOpen] = useState(false);
   const [comments, setComments] = useState({});
+  // const [selectedMedia, setSelectedMedia] = useState(null);
+
+
   
 
   useEffect(() => {
@@ -17,11 +20,11 @@ export const ShoutOutProvider = ({ children }) => {
     setShoutouts(sortedShoutouts);
   }, []);
 
-  const addShoutout = (shoutoutText) => {
-    if (!shoutoutText || typeof shoutoutText !== "string" || !shoutoutText.trim()) {
-      console.error("Invalid shoutout text:", shoutoutText);
+  const addShoutout = (shoutoutText = "", media = null) => {
+    if (!shoutoutText.trim() && !media) {
+      console.error("Either text or media is required for a shoutout");
       return;
-    }
+    }  
   
     const newShoutout = {
       id: Date.now(),
@@ -29,7 +32,10 @@ export const ShoutOutProvider = ({ children }) => {
       name: "Ruchie Roell",
       username: "@ruchieroell",
       content: shoutoutText.trim(),
-      media: "",
+      media: media ? {
+        type: media.type,
+        url: media.url
+      } : null,
       date: new Date().toISOString(),
       likes: 0,
     };

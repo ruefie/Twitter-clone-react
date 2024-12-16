@@ -120,7 +120,7 @@ position:sticky;
 
 .tabs button:hover {
   color: #1d9bf0;
-  border-bottom: 1px solid #1d9bf0;
+  /* border-bottom: 1px solid #1d9bf0; */
 }
 
 .activeTab {

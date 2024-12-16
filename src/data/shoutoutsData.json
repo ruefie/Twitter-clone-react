@@ -57,13 +57,13 @@
     "username": "@foodie_lover",
     "name": "Gourmet Chef",
     "profile_image": "https://randomuser.me/api/portraits/men/5.jpg",
-    "content": "Look at this delicious dish I made! 🍝",
+    "content": "Just chillin' in the park",
     "media":{
       "type": "video",
       "url":   "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
     },
    
-    "date": "2024-08-10T10:00:00Z",
+    "date": "2024-08-10T10:00:00Z", 
     "likes": 0
   },
   {

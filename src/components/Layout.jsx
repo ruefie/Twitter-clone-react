@@ -4,6 +4,7 @@ import SideBar from "./SideBar";
 import ReshoutModal from "../modal/ReshoutModal";
 import { ShoutOutContext } from "../context/ShoutOutContext";
 
+
 const Layout = () => {
   const { isReshoutModalOpen } = useContext(ShoutOutContext); 
   return (
@@ -11,7 +12,7 @@ const Layout = () => {
       {/* Render ReshoutModal when modal is open */}
       {isReshoutModalOpen && <ReshoutModal />} {/* Modal directly rendered from context */}
       <SideBar />
-      <main className="main-content">
+      <main >
         <Outlet /> {/* This is where child routes will render */}
       </main>
     </div>

@@ -14,6 +14,34 @@ const ReshoutModal = () => {
 
   if (!isReshoutModalOpen || !reshoutModalContent) return null;
 
+  const renderMedia = (media) => {
+    if (!media) return null;
+
+    switch (media.type) {
+      case "giphy":
+        return (
+          <iframe
+            src={media.url}
+            frameBorder="0"
+            allowFullScreen
+            title="Giphy GIF"
+            className={styles.media}
+          ></iframe>
+        );
+      case "video":
+        return (
+          <video controls className={styles.media}>
+            <source src={media.url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        );
+      case "image":
+        return <img src={media.url} alt="Post media" className={styles.media} />;
+      default:
+        return null;
+    }
+  };
+
   const handleShoutOut = () => {
     const reshoutedData = {
       id: reshoutModalContent.id,
@@ -41,6 +69,7 @@ const ReshoutModal = () => {
           &times;
         </button>
         <input
+        className={styles.input}
           value={reshoutText}
           onChange={(e) => setReshoutText(e.target.value)}
           placeholder="Add your thoughts..."
@@ -62,13 +91,8 @@ const ReshoutModal = () => {
             </span>
           </p>
           <p>{reshoutModalContent.content}</p>
-          {reshoutModalContent.media && (
-            <img
-              src={reshoutModalContent.media}
-              alt="Original media"
-              className={styles.mediaPreview}
-            />
-          )}
+          <div className={styles.reshoutContentMedia}> {reshoutModalContent.media && renderMedia(reshoutModalContent.media)}</div>
+         
         </div>
         <button onClick={handleShoutOut} className={styles.reshoutButton}>
           Shout Out!

@@ -97,7 +97,10 @@ const CommentModal = ({ isOpen, onClose, postId, postDetails }) => {
         <div className={styles.commentsSection}>
           {(comments[postId] || []).map((comment) => (
             <div key={comment.id} className={styles.comment}>
+              <strong>{comment.name}</strong>
+              <span>{comment.username}</span>
               <p>{comment.text}</p>
+
             </div>
           ))}
         </div>

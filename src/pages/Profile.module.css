@@ -1,0 +1,33 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: calc(100% - 220px);
+  margin-left: 220px;
+  background-color: hsl(210, 34%, 13%);
+  color: #fff;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  height: 100%;
+}
+
+.mainSection {
+  flex: 1;
+  max-width: 640px;
+  border-right: 0.5px solid rgba(204, 204, 204, 0.5);
+  border-left: 0.5px solid rgba(204, 204, 204, 0.5);
+  overflow-y: auto;
+}
+
+.sideSection {
+  width: 390px;
+  padding: 0 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}

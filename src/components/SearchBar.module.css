@@ -1,35 +1,57 @@
 .searchBar {
-  width: 556px; 
-  /* margin: 0 40px; */
-  /* position:sticky; */
-  top: 0;
+  position: relative;
   background-color: hsl(210, 34%, 13%);
   z-index: 10;
-  /* border-left: 1px solid rgba(204, 204, 204, 0.5); */
+}
+
+/* Default variant (for Profile page) */
+.default {
+  width: 80%;
+  padding: 8px 16px;
+}
+
+/* Header variant (for Home page) */
+.header {
+  width: 556px;
+}
+
+.explore {
+  width: 70%;
+  padding: 8px 16px;
 }
 
 .searchBar input {
-  width: 75%; 
-  padding: 10px 20px 10px 40px; 
-  margin: 20px 0 20px 20px;
+  width: 100%;
+  padding: 10px 20px 10px 40px;
   border: 1px solid #ccc;
-  border-radius: 50px; 
+  border-radius: 50px;
   font-size: 16px;
   outline: none;
-  background-color: hsl(210, 34%, 13%); 
-  color: #fff; 
+  background-color: hsl(210, 34%, 13%);
+  color: #fff;
 }
 
 .searchBar input::placeholder {
   color: #888;
 }
 
-.searchBar i {
-  position: absolute; 
-  top: 50%; 
-  right: 365px;
-  transform: translateY(-50%); 
-  color: #888; 
-  font-size: 18px; 
-  pointer-events: none; 
+.searchIcon {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* Header variant specific styles */
+.header .searchIcon {
+  left: 36px;
+}
+
+.header input {
+  margin: 20px 0 20px 20px;
+  width: 75%;
 }

@@ -5,6 +5,7 @@ import ShoutOutInput from "./ShoutOutInput";
 
 const SideBar = ({ addShoutout }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const username = "@ruchieroell"; // Hardcoded username for now
 
   const handleModalOpen = () => setIsModalOpen(true);
   const handleModalClose = () => setIsModalOpen(false);
@@ -20,7 +21,7 @@ const SideBar = ({ addShoutout }) => {
           <div className={styles.iconLinks}>
             <i className="fa-solid fa-house"></i>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
           </div>
           <div className={styles.iconLinks}>
@@ -62,7 +63,7 @@ const SideBar = ({ addShoutout }) => {
           <div className={styles.iconLinks}>
             <i className="fa-solid fa-user"></i>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to={`/${username}`}>Profile</Link>
             </li>
           </div>
           <div className={styles.iconLinks}>

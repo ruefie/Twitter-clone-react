@@ -149,7 +149,7 @@
   width: 100%;
   max-width: 550px; 
   overflow-y: auto;
-  top: -150px; 
+  top: 0; 
   left: -100px; 
   transform: translateY(-50px); 
 }

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+ 
+  min-height: 100vh;
+  
+  background-color: hsl(210, 34%, 13%);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}

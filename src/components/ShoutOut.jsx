@@ -63,6 +63,36 @@ const ShoutOut = ({
     });
   };
 
+  const renderMedia = (media) => {
+    if (!media) return null;
+
+    switch (media.type) {
+      case "giphy":
+        return (
+          <iframe
+            src={media.url}
+            frameBorder="0"
+            allowFullScreen
+            title="Giphy GIF"
+            className={styles.mediaGiphy}
+          ></iframe>
+        );
+      case "video":
+        return (
+          <video controls className={styles.media}>
+            <source src={media.url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        );
+      case "image":
+        return (
+          <img src={media.url} alt="Post media" className={styles.media} />
+        );
+      default:
+        return null;
+    }
+  };
+
   const handleCommentClick = () => {
     setIsCommentModalOpen(true);
   };
@@ -113,45 +143,16 @@ const ShoutOut = ({
                   </div>
                 </div>
                 <p className={styles.originalContent}>{reshouted.content}</p>
-                {reshouted.media && (
-                  <img
-                    src={reshouted.media}
-                    alt="Original media"
-                    className={styles.media}
-                  />
-                )}
+                <div className={styles.originalMedia}>
+                  {reshouted.media && renderMedia(reshouted.media)}
+                </div>
               </div>
             </div>
           ) : (
             <div className={styles.contentContainer}>
               <p className={styles.content}>{content}</p>
 
-              {media && (
-                <>
-                  {media.type === "giphy" && (
-                    <iframe
-                      src={media.url}
-                      frameBorder="0"
-                      allowFullScreen
-                      title="Giphy GIF"
-                      className={styles.media}
-                    ></iframe>
-                  )}
-                  {media.type === "video" && (
-                    <video controls className={styles.media}>
-                      <source src={media.url} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  )}
-                  {media.type === "image" && (
-                    <img
-                      src={media.url}
-                      alt="Post media"
-                      className={styles.media}
-                    />
-                  )}
-                </>
-              )}
+              {media && renderMedia(media)}
             </div>
           )}
         </div>

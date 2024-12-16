@@ -64,7 +64,7 @@ const Home = () => {
               Following
             </button>
           </div>
-          <SearchBar />
+          <SearchBar variant="header" />
         </div>
       </div>
 
